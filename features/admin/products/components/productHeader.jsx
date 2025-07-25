@@ -32,7 +32,7 @@ const ProductHeader = ({products,onFilterStatus,sidebtn}) => {
 <Searchbar placeholder='Search products...' onSearch={setStockFilterProduct} filterOptions={["All", "Name", "SKU"]} products={products} onStockFilter={setStockFilterProduct}/>
 </div>
 <div className='Add-btn p-1 flex justify-center items-center'>
-  <Button variant="outline" onClick={()=> router.push('/dashboard/products/addproduct')} className="w-full cursor-pointer bg-gradient-to-b from-blue-200 to-blue-300 hover:from-blue-300">
+  <Button variant="outline" onClick={()=> router.push('/products/addproduct')} className="w-full cursor-pointer bg-gradient-to-b from-blue-200 to-blue-300 hover:from-blue-300">
     Add Product
   </Button>
 </div>
