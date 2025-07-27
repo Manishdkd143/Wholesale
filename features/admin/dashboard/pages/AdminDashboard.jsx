@@ -3,58 +3,24 @@ import { Bell, User2, AlignJustify, X } from "lucide-react";
 import RevenueLineChart from "../Components/Revenue";
 import TopSellingProducts from "../Components/TopSellingProduct";
 import RecentOrders from "../Components/RecentOrder";
-import Sidebar from "../../Sidebar";
+import Sidebar from "../../Components/Sidebar";
 import { useState } from "react";
 
 const AdminDashboard = () => {
   const [sidebtn, setSideBtn] = useState(false);
   return (
-    <div className=" min-h-screen flex overflow-hidden">
-      {/* Sidebar */}
-      <div
-        className={`${
-          sidebtn
-            ? "fixed z-50 inset-y-0 left-0 sm:w-64 w-full bg-white shadow-lg"
-            : "hidden"
-        } md:block md:relative md:w-64`}
-      >
-        <Sidebar />
-        {/* Close Button (only visible in mobile view) */}
-        <div className="md:hidden absolute top-3.5 left-2 z-50">
-          <button
-            onClick={() => setSideBtn(false)}
-            className="bg-gray-300 p-1 rounded-sm"
-          >
-            <X />
-          </button>
-        </div>
-      </div>
-
+    <div className="">
       {/* Main content */}
-      <main className="flex-1 p-2 bg-gray-100 overflow-y-auto h-screen">
+      <main className=" p-2 bg-gray-100 overflow-y-auto h-screen">
         <div className="flex flex-col space-y-4">
           {/* Header */}
           <header className="flex justify-between items-center flex-wrap gap-2 p-2 bg-white shadow rounded">
             <div className="flex gap-2 items-center">
-              {/* Hamburger icon for mobile */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setSideBtn(true)}
-                  className="bg-gray-200 p-1 rounded-sm"
-                >
-                  <AlignJustify />
-                </button>
-              </div>
+
+             
               <h2 className="text-gray-800 font-bold text-2xl">Dashboard</h2>
             </div>
-            <div className="flex gap-4">
-              <span className="text-black font-bold cursor-pointer">
-                <Bell size={25} strokeWidth={1.5} />
-              </span>
-              <span className="text-black font-bold cursor-pointer">
-                <User2 size={25} strokeWidth={1.5} />
-              </span>
-            </div>
+           
           </header>
 
           {/* Stat Cards */}

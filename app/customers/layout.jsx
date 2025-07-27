@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '@/features/admin/Components/Sidebar'
 
-const DashboardLayout = ({ children }) => {
+const CustomerLayout = ({ children }) => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }) => {
       <main
         className={`
           flex-1 overflow-y-auto transition-all duration-300
-          ${isMobile ? 'pt-15' : ''}
+          ${isMobile ? 'pt-10' : ''}
         `}
       >
         {children}
@@ -32,4 +32,4 @@ const DashboardLayout = ({ children }) => {
   )
 }
 
-export default DashboardLayout
+export default CustomerLayout

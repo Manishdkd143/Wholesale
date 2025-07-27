@@ -1,7 +1,7 @@
 'use client'
 import {React,useState,useEffect} from 'react'
 import { AlignJustify, X, } from 'lucide-react'
-import Sidebar from '@/features/admin/Sidebar'
+import Sidebar from '@/features/admin/Components/Sidebar'
 import ProductHeader from '../components/productHeader'
 import ProductTable from '../components/productTable'
 // import { products } from '@/lib/product-data'
@@ -35,33 +35,14 @@ const ProductManagement = () => {
   
 
   return (
-        <div className=" min-h-screen flex overflow-hidden w-full h-full">
-      {/* Sidebar */}
-      <div
-        className={`${
-          sidebtn
-            ? "fixed z-50 inset-y-0 left-0 sm:w-64 w-full bg-white shadow-lg"
-            : "hidden"
-        } md:block md:relative md:w-64`}
-      >
-        <Sidebar />
-        {/* Close Button (only visible in mobile view) */}
-        <div className="md:hidden absolute top-3.5 left-2 z-50">
-          <button onClick={() => setSideBtn(false)}
-            className="bg-gray-300 p-1 rounded-sm"
-          >
-            <X />
-          </button>
-        </div>
-      </div>
-      <main className=" p-1 w-full h-full space-y-1 md:space-y-2">
-       <div className="">
+        <div className=" min-h-screen flex overflow-y-auto px-2 h-full flex-col">
+       <div className="p-[5px_30px] bg-white border-b-[#0e0e0e] border-b-[1px] shrink-0">
           <ProductHeader products={products}  onFilterStatus={setStockFilterProduct} sidebtn={setSideBtn}/>
        </div>
-       <div>
+       <div className="flex-1 overflow-y-auto p-[5px_5px]">
           <ProductTable products={products} selected={selected} setSelected={setSelected} onEdit={handleEdit} onView={handleView} FilterStatus={stockFilterProduct}/>
        </div>
-      </main>
+
       </div>
   )
 }

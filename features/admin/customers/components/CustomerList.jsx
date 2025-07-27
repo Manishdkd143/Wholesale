@@ -421,33 +421,57 @@ const activeList=isSearching?filteredCust:customers;
    
   </div>
 
-  {/* Pagination */}
-  {paginated.length>0 && (
-    <div className="w-full flex justify-center items-center mt-8">
-      <div className="flex gap-3">
-        <Button variant="secondary"
-        size={10}
-          disabled={page === 0}
-          onClick={() => setPage(page - 1)}
-          className=" text-black p-1"
-        >
-          <ChevronLeftSquareIcon size={24} />
-        </Button>
-        <span className={`p-2 text-sm font-medium bg-gray-100 rounded-md `}>
-          {page + 1}
-        </span>
-        <Button
-         variant="secondary"
-        size={10}
-          disabled={(page + 1) * rowsPerPage >= activeList.length}
-          onClick={() => setPage(page + 1)}
-          className="text-black p-1"
-        >
-          <ChevronRightSquareIcon size={24} />
-        </Button>
-      </div>
-    </div>
-  )}
+  {/* Enhanced Pagination - Sticky Bottom */}
+   {paginated.length > 0 && (
+     <div className="sticky bottom-0 z-10 bg-white border-t-2 border-gray-200 shadow-lg">
+       <div className="px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+         
+         {/* Pagination Controls */}
+         <div className="flex items-center gap-2">
+           <Button 
+             disabled={page === 0} 
+             onClick={() => setPage(page - 1)} 
+             size="sm" 
+             variant="outline" 
+             className="h-8 w-8 p-0 hover:bg-blue-50 hover:border-blue-300 disabled:opacity-50"
+           >
+             <ChevronLeftSquareIcon size={16} />
+           </Button>
+           
+           <div className="flex items-center gap-2 px-3 py-1 bg-gray-50 rounded-md border">
+             <span className="text-sm text-gray-600 font-medium">Page</span>
+             <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm font-bold min-w-[28px] text-center border border-blue-200">
+               {page + 1}
+             </span>
+             <span className="text-sm text-gray-600">of</span>
+             <span className="text-sm font-bold text-gray-700">
+               {Math.ceil(customers.length / rowsPerPage)}
+             </span>
+           </div>
+           
+           <Button 
+             disabled={(page + 1) * rowsPerPage >= customers.length} 
+             onClick={() => setPage(page + 1)} 
+             size="sm" 
+             variant="outline" 
+             className="h-8 w-8 p-0 hover:bg-blue-50 hover:border-blue-300 disabled:opacity-50"
+           >
+             <ChevronRightSquareIcon size={16} />
+           </Button>
+         </div>
+ 
+         {/* Results Info */}
+         <div className="text-sm text-gray-600 bg-gray-50 px-3 py-1 rounded-md border">
+           <span className="font-medium">
+             Showing {page * rowsPerPage + 1} - {Math.min((page + 1) * rowsPerPage, customers.length)}
+           </span>
+           <span className="mx-1">of</span>
+           <span className="font-bold text-gray-700">{customers.length}</span>
+           <span className="ml-1">Customer</span>
+         </div>
+       </div>
+     </div>
+   )}
 </section>
 
     </main>
